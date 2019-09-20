@@ -1,4 +1,5 @@
 import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import './config/ReactotronConfig';
@@ -9,15 +10,17 @@ import history from './services/history';
 
 // NOTE: store MUST BE IMPORTED AFTER ReactotronConfig.
 // because it will not have function as sagaMonitor or createEnhancer
-import store from './store';
+import { store, persistor } from './store';
 
 function App() {
   return (
     <Provider store={store}>
-      <Router history={history}>
-        <Routes />
-        <GlobalStyle />
-      </Router>
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <Routes />
+          <GlobalStyle />
+        </Router>
+      </PersistGate>
     </Provider>
   );
 }

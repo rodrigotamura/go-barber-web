@@ -219,3 +219,44 @@ Do not forget to import in [rootReducer](./src/store/modules/rootReducer.js) and
 Open Reactotron Desktop, and add user in State. Login again and you will see:
 
 ![Reactotron user](reactotron-user.png)
+
+### Persisting data - Redux Persist
+
+Let's make now the user's data stored in Redux does not lose when user close or refresh the page.
+
+We will use a lib called **Redux Persist**:
+
+`$ yarn add redux-persist`
+
+Create a new file: [/src/store/persistReducers.js](./src/store/persistReducers.js). Open it to check out further implementations.
+
+Redux Persist can persist data in a local storage, database, async storage (React Native), and so on.
+In this approach we will are importing and using:
+
+```javascript
+import storage from 'redux-persist/lib/storage';
+```
+
+It is setting our application is going to use **local storage**, when our application is running over a browser, or **async storage (which is SQLite DB)** when our application is running over mobile (React Native).
+
+Now, open [Redux configuration](./src/store/index.js) and include extra configurations in order to use Redux Persist.
+
+![Redux Persist](./redux-persist.png)
+
+Open [App.js](./src/App.js) and [Route](./src/routes/Route.js), change the importing of store from './store' to `import { store } from '~/store'`.
+
+At [App.js](./src/App.js) let's apply extra settings:
+
+![Persist app](./persist-app.png)
+
+`PersistGate` will render the content of `<Router>` only after taken the information in Storage from our application.
+
+Refreshing the application, you might see at Reactotron Desktop some extra logs:
+
+![Reactotron persist](./reactotron-persist.png)
+
+`REHYDRATE` means that it went to storage of the application, has taken the data which are saved (you may see `payload->auth / user`) and include them into Redux.
+
+Now, if you try to login in the application with the right credentials and refresh the page, probably you will keep logged in, and Reactotron will display within `REHYDRATE` the data of the logged user:
+
+![Chrome Persist](chrome-persist.png)
