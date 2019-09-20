@@ -139,3 +139,30 @@ Now, trying validation you will see the error messages:
 We could apply some stylization on these error messages [here](./src/pages/_layouts/auth/styles.js).
 
 As long as there ae errors in the validation, the form will not submit.
+
+# Configuring Store
+
+The authentication we will make using Redux, because the JWT token must be available in whole application. It includes also the user's informations which we will use them on many components, e.g. Header component which indicates who is logged in.
+
+### Adding Redux, Saga, Immer and its features
+
+For a deeper understanding about it, [click here](https://github.com/rodrigotamura/go-stack-2019/tree/master/module04/flux#configuring-redux).
+
+However in a nutshell we'll explain again about Redux and Saga implementations:
+
+1. Install `$ yarn add redux redux-saga react-redux reactotron-redux reactotron-redux-saga immer`
+2. Create these folder under /src/:
+   ![redux files](redux-files.png)
+3. Coding [reducer](./src/store/modules/Auth/reducer.js);
+4. Coding [actions](./src/store/modules/Auth/actions.js);
+5. Coding [sagas](./src/store/modules/Auth/sagas.js);
+6. Coding [rootReducer](./src/store/modules/rootReducer.js);
+7. Coding [rootSaga](./src/store/modules/rootSaga.js);
+8. Coding [Redux configuration](./src/store/index.js);
+   8.1 We will create [/src/store/createStore.js](./src/store/createStore.js) in order to not make so big the [Redux configuration](./src/store/index.js);
+9. Configuring [Reactotron config](./src/config/ReactotronConfig.js) for Redux recognition;
+   9.1 Open [Redux configuration](./src/store/index.js);
+   9.2 Open [/src/store/createStore.js](./src/store/createStore.js);
+10. Open [App.js](./src/App.js)
+11. Test it, openning Reactotron Destop, and adding a new _state_ called `auth`:
+    ![REactotron+Redux](reactotron-redux.png)
