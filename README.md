@@ -152,7 +152,9 @@ However in a nutshell we'll explain again about Redux and Saga implementations:
 
 1. Install `$ yarn add redux redux-saga react-redux reactotron-redux reactotron-redux-saga immer`
 2. Create these folder under /src/:
-   ![redux files](redux-files.png)
+
+![redux files](redux-files.png)
+
 3. Coding [reducer](./src/store/modules/Auth/reducer.js);
 4. Coding [actions](./src/store/modules/Auth/actions.js);
 5. Coding [sagas](./src/store/modules/Auth/sagas.js);
@@ -165,4 +167,5 @@ However in a nutshell we'll explain again about Redux and Saga implementations:
    9.2 Open [/src/store/createStore.js](./src/store/createStore.js);
 10. Open [App.js](./src/App.js)
 11. Test it, openning Reactotron Destop, and adding a new _state_ called `auth`:
-    ![REactotron+Redux](reactotron-redux.png)
+
+![REactotron+Redux](reactotron-redux.png)
