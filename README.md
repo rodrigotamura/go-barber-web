@@ -122,3 +122,20 @@ function handleSubmit(data) {
 ```
 
 5. Try it submitting something and you will see each input along with its value.
+
+# Validating
+
+Let's implement validation which it will prevent the user to submit form with invalid inputs.
+
+Install: `$ yarn add yup`
+(Yes! this Yup we've implemented in our GoBarber's backend 👍! [Click here to remember](https://github.com/rodrigotamura/go-stack-2019/tree/master/module02#validation) and go back here again!)
+
+Please, open [Signin page](.src/pages/Signin/index.js) and [Signup page](./src/pages/Signun/index.js) to see the implementations.
+
+Now, trying validation you will see the error messages:
+
+![validate error](validate.png)
+
+We could apply some stylization on these error messages [here](./src/pages/_layouts/auth/styles.js).
+
+As long as there ae errors in the validation, the form will not submit.

@@ -33,6 +33,13 @@ export const Content = styled.div`
       color: rgba(255, 255, 255, 0.7);
     }
   }
+  /* Error styles */
+  span {
+    color: #fb6f91;
+    align-self: flex-start;
+    margin: 0 0 10px;
+    font-weight: bold;
+  }
 
   button {
     margin: 5px 0 0;
