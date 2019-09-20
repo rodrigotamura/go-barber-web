@@ -201,3 +201,21 @@ If you try to login again, Reactotron will show us that **auth reducer** has the
 Open [Route](src/routes/Route.js) and import Redux configurations and `signed` variable will receive the Redux's state:
 
 ![Route Redux](route-redux.png)
+
+# Storing profile
+
+Till now, if the user login into the application properly and refresh the page, it will lose its profile data and token.
+
+In order to store the user informations (not token yet), we will create another Reducer called User. Because token is a kind of information related to authentication, and user's profile (e.g. name, e-mail address, etc.) is related to profile itself.
+
+So, let's create:
+
+- [User reducer](./src/store/modules/user/reducer.js);
+- [User actions](./src/store/modules/user/actions.js);
+- [User sagas](./src/store/modules/user/sagas.js);
+
+Do not forget to import in [rootReducer](./src/store/modules/rootReducer.js) and [rootSaga](./src/store/modules/rootSaga.js).
+
+Open Reactotron Desktop, and add user in State. Login again and you will see:
+
+![Reactotron user](reactotron-user.png)
