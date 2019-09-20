@@ -260,3 +260,17 @@ Refreshing the application, you might see at Reactotron Desktop some extra logs:
 Now, if you try to login in the application with the right credentials and refresh the page, probably you will keep logged in, and Reactotron will display within `REHYDRATE` the data of the logged user:
 
 ![Chrome Persist](chrome-persist.png)
+
+# Refactoring Reducer
+
+Maybe you are realizing that the code in [Auth Reducer](./src/store/modules/auth/reducer.js) is repeating `return produce(state, draft => { .... })`:
+
+![Reducer repeat](reducer-repeat.png)
+
+We could refactory it transforming into:
+
+![Reducer repeat new](reducer-repeat-new.png)
+
+# Treating with invalid login
+
+Open [Auth Sagas](./src/store/modules/auth/sagas.js) and simply let's implement an error handling with `try/catch`.
