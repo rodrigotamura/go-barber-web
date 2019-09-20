@@ -96,3 +96,29 @@ It's done! ESlint now may understand `~/` importings.
 Wait! There is a last configuration we should make! 😒
 
 If you try to open `'~/pages/Signin'` with <kbd>CTRL</kbd>+<kbd>Right-click</kbd>, VSCode will not open this file automatically. To solve it create [./jsconfig.json](./jsconfig.json). Open this file for further details.
+
+# Using Unform
+
+By default, if we want to get the inputs values (from authentication and registration) we should create states monitoring every changes in these inputs by `onChange` storing them into a state variable, and get these variables submiting to API.
+
+We have a lib which create performatic forms which we can use in our ReactJS projects:
+
+`$ yarn add @rocketseat/unform`
+
+1. Import it within [SignIn page](./src/pages/Signin/index.js)
+
+```javascript
+import { Form, Input } from '@rocketseat/unform';
+```
+
+2. Replace `<form>` into `<Form>` and `<input>` into `<Input>`;
+3. Add in each `<Input>` a `name`;
+4. Add `<Form onSubmit={handleSubmit}>` and include a new function:
+
+```javascript
+function handleSubmit(data) {
+  console.tron.log(data);
+}
+```
+
+5. Try it submitting something and you will see each input along with its value.
