@@ -151,21 +151,53 @@ For a deeper understanding about it, [click here](https://github.com/rodrigotamu
 However in a nutshell we'll explain again about Redux and Saga implementations:
 
 1. Install `$ yarn add redux redux-saga react-redux reactotron-redux reactotron-redux-saga immer`
-2. Create these folder under /src/:
+2. Create these folders and files under `/src/`:
 
 ![redux files](redux-files.png)
 
-3. Coding [reducer](./src/store/modules/Auth/reducer.js);
-4. Coding [actions](./src/store/modules/Auth/actions.js);
-5. Coding [sagas](./src/store/modules/Auth/sagas.js);
+3. Coding [reducer](./src/store/modules/auth/reducer.js);
+4. Coding [actions](./src/store/modules/auth/actions.js);
+5. Coding [sagas](./src/store/modules/auth/sagas.js);
 6. Coding [rootReducer](./src/store/modules/rootReducer.js);
 7. Coding [rootSaga](./src/store/modules/rootSaga.js);
 8. Coding [Redux configuration](./src/store/index.js);
+
    8.1 We will create [/src/store/createStore.js](./src/store/createStore.js) in order to not make so big the [Redux configuration](./src/store/index.js);
+
 9. Configuring [Reactotron config](./src/config/ReactotronConfig.js) for Redux recognition;
+
    9.1 Open [Redux configuration](./src/store/index.js);
    9.2 Open [/src/store/createStore.js](./src/store/createStore.js);
+
 10. Open [App.js](./src/App.js)
 11. Test it, openning Reactotron Destop, and adding a new _state_ called `auth`:
 
-![REactotron+Redux](reactotron-redux.png)
+![Reactotron+Redux](reactotron-redux.png)
+
+# Implementing Authentication
+
+1. Create functions `signInRequest()`, `signInSuccess()` and `signFailure()` in [actions](./src/store/modules/auth/actions.js);
+2. Open [sagas](./src/store/modules/auth/sagas.js) and code `signIn()` function;
+3. Open [Signin page](.src/pages/Signin/index.js) and implement React Hooks (`useDispatch`), and import `signInRequest()` from `/src/store/modules/auth/actions.js` which SignIn component need to fire in order to Saga listen on it and make the authentication process;
+
+Now, if you try to sign in again with correct e-mail and password, Reactotron DEsktop will show us:
+
+![Reactotron+Auth](reactotron-auth.png)
+
+Note that `CALL` (calling API) is returning successfully the JWT token, and `PUT` is sending `token` and `user` with its values into `@auth/SIGN_IN_SUCCESS`.
+
+We need now to make the variable `signed` within [Route](src/routes/Route.js) receives dynamically wether user is logged in or not:
+
+![Auth variable](auth-variable.png)
+
+To make it, we need firstly open [reducer](./src/store/modules/auth/reducer.js) and set the `INITIAL_STATE` and add a new behavior when the action `@auth/SIGN_IN_SUCCESS` is fired. Remembering that our token and user's informations retrieved from API are stored in `payload` object within`action`:
+
+![Reducer action](reducer-action.png)
+
+If you try to login again, Reactotron will show us that **auth reducer** has the follow data:
+
+![Reactotron Token](reactotron-token.png)
+
+Open [Route](src/routes/Route.js) and import Redux configurations and `signed` variable will receive the Redux's state:
+
+![Route Redux](route-redux.png)
