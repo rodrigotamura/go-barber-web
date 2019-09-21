@@ -38,6 +38,8 @@ export const NotificationList = styled.div`
   background: rgba(0, 0, 0, 0.6);
   border-radius: 4px;
   padding: 15px 5px;
+  opacity: ${props => (props.visible ? '1' : '0')};
+  transition: opacity 0.2s;
 
   &::before {
     content: '';
@@ -68,6 +70,8 @@ export const Notification = styled.div`
   time {
     font-size: 12px;
     opacity: 0.6;
+    display: block;
+    margin-bottom: 5px;
   }
 
   button {
@@ -77,7 +81,6 @@ export const Notification = styled.div`
     color: ${lighten(0.2, '#7159c1')};
     padding: 0 5px;
     margin: 0 5px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   ${props =>

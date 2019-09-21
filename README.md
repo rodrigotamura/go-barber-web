@@ -333,10 +333,28 @@ Now, every time when `persist/REHYDRATE` is fired, `setToken()` will be executed
 
 # Scrollbar
 
-In our [Notification Component](./src/components/Notifications/index.js) we need to add a scrollbar, because we do not want a large list transpassing viewport.
+In our [Notification Component](./src/components/Notifications/index.js) we need to add a scrollbar, because we do not want a large list transpassing the viewport.
 
 Let's install `$ yarn add react-perfect-scrollbar`.
 
 Now, include a styled component (let's call it `Scroll`) surrounding the content of our list and add it into [Styled Component from Notifications](./src/components/Notifications/styles.js).
 
 Finally add the styles from React Perfect Scrollbar into [Global Styles](./src/styles/global.js)
+
+# Calculating date and time with Date FNS
+
+At Notifications, we want to display the relative date time which a notification was created:
+
+![Notification date](./notification-date.png)
+
+If we make a GET request to notifications from GoBarber API, we will get these data:
+
+![Notification created](./notification-created.png)
+
+So, by `created_at` we will calc how long the notification was created.
+
+In order to make this calc, let's install a new lib:
+
+`$ yarn add date-fns@next` (@next means more recent version)
+
+Open [Notification Component](./src/components/Notifications/index.js) to check out further informations.
