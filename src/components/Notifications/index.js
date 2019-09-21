@@ -77,7 +77,7 @@ export default function Notifications() {
               <time>{notification.timeDistance}</time>
               {!notification.read && (
                 <button
-                  stype="button"
+                  type="button"
                   onClick={() => handleMarkAsRead(notification._id)}
                 >
                   Mark as read
