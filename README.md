@@ -274,3 +274,59 @@ We could refactory it transforming into:
 # Treating with invalid login
 
 Open [Auth Sagas](./src/store/modules/auth/sagas.js) and simply let's implement an error handling with `try/catch`.
+
+# Authenticated Requests
+
+We need now add token at each requesting header with Axios.
+
+Open [Auth Sagas](./src/store/modules/auth/sagas.js) and include:
+
+```javascript
+api.defaults.headers.Authorization = `Bearer ${token}`;
+```
+
+For testing purpose, let's open [Dashboard page](./src/pages/Dashboard/index.js) and make an API request within component:
+
+```javascript
+import React from 'react';
+import api from '~/services/api';
+
+// import { Container } from './styles';
+
+export default function Dashboard() {
+  api.get('appointments');
+  return <h1>Dashboard</h1>;
+}
+```
+
+Run application, open _Network_ tab in developer tools and try to login with coorect credentials. Probably you should see:
+
+![Developer Tools](./developer-tools.png)
+
+Look at `Status` which is `200`. It means that JWT authentication is working 👍.
+
+However, if the user refresh the page, it will return an error, because `signin()` of SAGAS is not running.
+
+To solve it, firstly let's open Timeline menu in Reactotron Desktop. You will see that `persist/REHYDRATE` is persisting user's data, including its token.
+
+A very increadible thing we can do is to **listen to `persist/REHYDRATE`**. Open [Auth Sagas](./src/store/modules/auth/sagas.js) and you can implement:
+
+```javascript
+export function setToken({ payload }) {
+  if (!payload) return; // if payload is empty, meaning that user is not loggedin
+
+  const { token } = payload.auth;
+
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+}
+
+export default all([
+  takeLatest('persist/REHYDRATE', setToken),
+  takeLatest('@auth/SIGN_IN_REQUEST', signIn),
+  takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+]);
+```
+
+Now, every time when `persist/REHYDRATE` is fired, `setToken()` will be executed, setting token part of header requests.
