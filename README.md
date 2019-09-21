@@ -330,3 +330,13 @@ export default all([
 ```
 
 Now, every time when `persist/REHYDRATE` is fired, `setToken()` will be executed, setting token part of header requests.
+
+# Scrollbar
+
+In our [Notification Component](./src/components/Notifications/index.js) we need to add a scrollbar, because we do not want a large list transpassing viewport.
+
+Let's install `$ yarn add react-perfect-scrollbar`.
+
+Now, include a styled component (let's call it `Scroll`) surrounding the content of our list and add it into [Styled Component from Notifications](./src/components/Notifications/styles.js).
+
+Finally add the styles from React Perfect Scrollbar into [Global Styles](./src/styles/global.js)
