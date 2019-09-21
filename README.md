@@ -358,3 +358,15 @@ In order to make this calc, let's install a new lib:
 `$ yarn add date-fns@next` (@next means more recent version)
 
 Open [Notification Component](./src/components/Notifications/index.js) to check out further informations.
+
+# Updating avatar
+
+Create [/src/pages/Profile/AvatarInput/index.js](./src/pages/Profile/AvatarInput/index.js). Import:
+
+```javascript
+import { useField } from '@rocketseat/unform';
+```
+
+`useField()` is a React Hook which will help to build personal fields in a component.
+
+Our goal is to show the current avatar. When user choose another avatar from file, it will show a preview of it.
