@@ -378,9 +378,9 @@ If we make a GET request to notifications from GoBarber API, we will get these d
 
 ![Notification created](./img/notification-created.png)
 
-So, by `created_at` we will calc how long the notification was created.
+So, by `created_at` we will calculate how long the notification was created.
 
-In order to make this calc, let's install a new lib:
+In order to make this calculate, let's install a new lib:
 
 `$ yarn add date-fns@next` (@next means more recent version)
 
