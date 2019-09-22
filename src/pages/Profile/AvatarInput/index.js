@@ -15,6 +15,8 @@ export default function AvatarInput() {
 
   useEffect(() => {
     if (ref.current) {
+      // this code snippet will work only with React 16.8.x
+      // React 16.9 will generate will work, but will generate a lot of errors.
       registerField({
         name: 'avatar_id',
         ref: ref.current,
