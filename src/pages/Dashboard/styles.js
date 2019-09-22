@@ -42,13 +42,14 @@ export const Time = styled.li`
   strong {
     display: block;
     color: ${props => (props.available ? '#999' : '#7159c1')};
-    font-size: 20px;
-    font-weight: normal;
+    font-size: ${props => (props.available ? '20px' : '30px')};;
+    font-weight: ${props => (props.available ? 'normal' : 'bold')};
   }
 
   span {
     display: block;
     margin-top: 3px;
     color: ${props => (props.available ? '#999' : '#555')};
+    font-weight: ${props => (props.available ? 'normal' : 'bold')};
   }
 `;

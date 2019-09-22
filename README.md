@@ -370,3 +370,19 @@ import { useField } from '@rocketseat/unform';
 `useField()` is a React Hook which will help to build personal fields in a component.
 
 Our goal is to show the current avatar. When user choose another avatar from file, it will show a preview of it.
+
+# Schedule - Timezones and UTC
+
+Listing the schedules at [/src/pages/Dashboard/index.js](./src/pages/Dashboard/index.js) we have some inconsistences.
+
+Our frontend is taking the time from the local computer of user/client (`new Date()`), however the time of schedules from API are stored without timezone (global format or UTC - in Brazil UTC is -3).
+
+If we want to make some comparision between dates from client's computer and our API computer is to set the front end works also with UTC.
+
+To do it, we will install a lib `$ yarn add date-fns-tz` which deals with timezones. Import it where we need to implement it (our case is within [Dashboard component](./src/pages/Dashboard/index.js)):
+
+```javascript
+import { utcToZonedTime } from 'date-fns-tz';
+```
+
+This `utcToZonedTime` will convert the timezone onto UTC (without timezone).
