@@ -122,7 +122,7 @@ It's done! ESlint now may understand `~/` importings.
 
 Wait! There is a last configuration we should make! 😒
 
-If you try to open `'~/pages/Signin'` with <kbd>CTRL</kbd>+<kbd>Right-click</kbd>, VSCode will not open this file automatically. To solve it create [./jsconfig.json](./jsconfig.json). Open this file for further details.
+If you try to open `'~/pages/Signin'` with <kbd>CTRL</kbd>+<kbd>Click</kbd>, VSCode will not open this file automatically. To solve it create [./jsconfig.json](./jsconfig.json). Open this file for further details.
 
 # Using Unform
 
