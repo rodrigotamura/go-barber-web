@@ -6,6 +6,25 @@ Welcome! This is **GoBarber - Providers App**!
 
 Basically it is an application made with ReactJS with several features and resources. GoBarber - Providers App is consuming [GoBarber API](https://github.com/rodrigotamura/go-stack-2019/tree/master/module02), made with Express Framework.
 
+- [Extras about routes](#extras-about-routes)
+  - [Protecting Routes](#protecting-routes)
+  - [Creating custom 404 page](#creating-custom-404-page)
+- [Using root import](#using-root-import)
+- [Using Unform](#using-unform)
+- [Validating](#validating)
+- [Configuring Store](#configuring-store)
+  - [Adding Redux, Saga, Immer and its features](#adding-redux--saga--immer-and-its-features)
+- [Implementing Authentication](#implementing-authentication)
+- [Storing profile](#storing-profile)
+  - [Persisting data - Redux Persist](#persisting-data---redux-persist)
+- [Refactoring Reducer](#refactoring-reducer)
+- [Treating with invalid login](#treating-with-invalid-login)
+- [Authenticated Requests](#authenticated-requests)
+- [Scrollbar](#scrollbar)
+- [Calculating date and time with Date FNS](#calculating-date-and-time-with-date-fns)
+- [Updating avatar](#updating-avatar)
+- [Schedule - Timezones and UTC](#schedule---timezones-and-utc)
+
 # Extras about routes
 
 ### Protecting Routes
