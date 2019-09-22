@@ -1,3 +1,11 @@
+# About this project
+
+Welcome! This is **GoBarber - Providers App**!
+
+![go-barber](./img/app.gif)
+
+Basically it is an application made with ReactJS with several features and resources. GoBarber - Providers App is consuming [GoBarber API](https://github.com/rodrigotamura/go-stack-2019/tree/master/module02), made with Express Framework.
+
 # Extras about routes
 
 ### Protecting Routes
@@ -134,7 +142,7 @@ Please, open [Signin page](.src/pages/Signin/index.js) and [Signup page](./src/p
 
 Now, trying validation you will see the error messages:
 
-![validate error](validate.png)
+![validate error](./img/validate.png)
 
 We could apply some stylization on these error messages [here](./src/pages/_layouts/auth/styles.js).
 
@@ -153,7 +161,7 @@ However in a nutshell we'll explain again about Redux and Saga implementations:
 1. Install `$ yarn add redux redux-saga react-redux reactotron-redux reactotron-redux-saga immer`
 2. Create these folders and files under `/src/`:
 
-![redux files](redux-files.png)
+![redux files](./img/redux-files.png)
 
 3. Coding [reducer](./src/store/modules/auth/reducer.js);
 4. Coding [actions](./src/store/modules/auth/actions.js);
@@ -172,7 +180,7 @@ However in a nutshell we'll explain again about Redux and Saga implementations:
 10. Open [App.js](./src/App.js)
 11. Test it, openning Reactotron Destop, and adding a new _state_ called `auth`:
 
-![Reactotron+Redux](reactotron-redux.png)
+![Reactotron+Redux](./img/reactotron-redux.png)
 
 # Implementing Authentication
 
@@ -182,25 +190,25 @@ However in a nutshell we'll explain again about Redux and Saga implementations:
 
 Now, if you try to sign in again with correct e-mail and password, Reactotron DEsktop will show us:
 
-![Reactotron+Auth](reactotron-auth.png)
+![Reactotron+Auth](./img/reactotron-auth.png)
 
 Note that `CALL` (calling API) is returning successfully the JWT token, and `PUT` is sending `token` and `user` with its values into `@auth/SIGN_IN_SUCCESS`.
 
 We need now to make the variable `signed` within [Route](src/routes/Route.js) receives dynamically wether user is logged in or not:
 
-![Auth variable](auth-variable.png)
+![Auth variable](./img/auth-variable.png)
 
 To make it, we need firstly open [reducer](./src/store/modules/auth/reducer.js) and set the `INITIAL_STATE` and add a new behavior when the action `@auth/SIGN_IN_SUCCESS` is fired. Remembering that our token and user's informations retrieved from API are stored in `payload` object within`action`:
 
-![Reducer action](reducer-action.png)
+![Reducer action](./img/reducer-action.png)
 
 If you try to login again, Reactotron will show us that **auth reducer** has the follow data:
 
-![Reactotron Token](reactotron-token.png)
+![Reactotron Token](./img/reactotron-token.png)
 
 Open [Route](src/routes/Route.js) and import Redux configurations and `signed` variable will receive the Redux's state:
 
-![Route Redux](route-redux.png)
+![Route Redux](./img/route-redux.png)
 
 # Storing profile
 
@@ -218,7 +226,7 @@ Do not forget to import in [rootReducer](./src/store/modules/rootReducer.js) and
 
 Open Reactotron Desktop, and add user in State. Login again and you will see:
 
-![Reactotron user](reactotron-user.png)
+![Reactotron user](./img/reactotron-user.png)
 
 ### Persisting data - Redux Persist
 
@@ -241,35 +249,35 @@ It is setting our application is going to use **local storage**, when our applic
 
 Now, open [Redux configuration](./src/store/index.js) and include extra configurations in order to use Redux Persist.
 
-![Redux Persist](./redux-persist.png)
+![Redux Persist](./img/redux-persist.png)
 
 Open [App.js](./src/App.js) and [Route](./src/routes/Route.js), change the importing of store from './store' to `import { store } from '~/store'`.
 
 At [App.js](./src/App.js) let's apply extra settings:
 
-![Persist app](./persist-app.png)
+![Persist app](./img/persist-app.png)
 
 `PersistGate` will render the content of `<Router>` only after taken the information in Storage from our application.
 
 Refreshing the application, you might see at Reactotron Desktop some extra logs:
 
-![Reactotron persist](./reactotron-persist.png)
+![Reactotron persist](./img/reactotron-persist.png)
 
 `REHYDRATE` means that it went to storage of the application, has taken the data which are saved (you may see `payload->auth / user`) and include them into Redux.
 
 Now, if you try to login in the application with the right credentials and refresh the page, probably you will keep logged in, and Reactotron will display within `REHYDRATE` the data of the logged user:
 
-![Chrome Persist](chrome-persist.png)
+![Chrome Persist](./img/chrome-persist.png)
 
 # Refactoring Reducer
 
 Maybe you are realizing that the code in [Auth Reducer](./src/store/modules/auth/reducer.js) is repeating `return produce(state, draft => { .... })`:
 
-![Reducer repeat](reducer-repeat.png)
+![Reducer repeat](./img/reducer-repeat.png)
 
 We could refactory it transforming into:
 
-![Reducer repeat new](reducer-repeat-new.png)
+![Reducer repeat new](./img/reducer-repeat-new.png)
 
 # Treating with invalid login
 
@@ -301,7 +309,7 @@ export default function Dashboard() {
 
 Run application, open _Network_ tab in developer tools and try to login with coorect credentials. Probably you should see:
 
-![Developer Tools](./developer-tools.png)
+![Developer Tools](./img/developer-tools.png)
 
 Look at `Status` which is `200`. It means that JWT authentication is working 👍.
 
@@ -345,11 +353,11 @@ Finally add the styles from React Perfect Scrollbar into [Global Styles](./src/s
 
 At Notifications, we want to display the relative date time which a notification was created:
 
-![Notification date](./notification-date.png)
+![Notification date](./img/notification-date.png)
 
 If we make a GET request to notifications from GoBarber API, we will get these data:
 
-![Notification created](./notification-created.png)
+![Notification created](./img/notification-created.png)
 
 So, by `created_at` we will calc how long the notification was created.
 
